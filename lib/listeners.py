@@ -52,7 +52,7 @@ def main():
                     if command[1] == alistener.lower():
                         break
                 if command[1] != alistener.lower():
-                    print(f'{RED}[-] Invalid listener {command[1]}{NORMAL}.')
+                    print(f'{RED}[-] Invalid listener {command[1]}.{NORMAL}')
                     continue
                 if alistener == 'ShadowShark':
                     listener.ShadowSharkListener().main()
