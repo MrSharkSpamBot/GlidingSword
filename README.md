@@ -15,7 +15,7 @@ $ sudo cp GlidingSword /usr/bin/
 ```
 $ sudo pacman -S python git
 $ cd /opt/
-$ git clone https://github.com/MrSharkSpamBot/GlidingSword.git
+$ sudo git clone https://github.com/MrSharkSpamBot/GlidingSword.git
 $ cd GlidingSword/
 $ sudo chmod +x GlidingSword
 $ sudo cp GlidingSword /usr/bin/
