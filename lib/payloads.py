@@ -97,7 +97,7 @@ def main():
                     if command[1] == payload_type.lower():
                         break
                 if command[1] != payload_type.lower():
-                    print(f'{RED}[-] Invalid payload type {command[1]}{NORMAL}.')
+                    print(f'{RED}[-] Invalid payload type {command[1]}.{NORMAL}')
                     continue
                 if payload_type == 'ShadowShark':
                     payload_type_menu(payload_type, SHADOWSHARK)
