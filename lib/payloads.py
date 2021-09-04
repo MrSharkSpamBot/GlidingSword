@@ -56,7 +56,7 @@ def payload_type_menu(payload_type, payloads):
                         info = payloads[p]
                         break
                 if command[1] != p.lower():
-                    print(f'{RED}[-] Invalid payload {command[1]}{NORMAL}.')
+                    print(f'{RED}[-] Invalid payload {command[1]}.{NORMAL}')
                     continue
                 payload.Payload(p, payload_type, info).main()
 
