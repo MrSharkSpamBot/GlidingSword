@@ -103,10 +103,10 @@ class Payload:
                     continue
                 if len(command) >= 2:
                     if not command[1] in ['lhost', 'lport']:
-                        print(f'{self.red}[-] Invalid option {command[1]}{self.normal}.')
+                        print(f'{self.red}[-] Invalid option {command[1]}.{self.normal}')
                         continue
                 if len(command) == 2:
-                    print(f'{self.red}[-] No value to set for option {command[1]}{self.normal}.')
+                    print(f'{self.red}[-] No value to set for option {command[1]}.{self.normal}')
                     continue
                 if len(command) == 3:
                     if command[1] == 'lhost':
