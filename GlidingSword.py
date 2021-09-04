@@ -4,6 +4,7 @@ The main menu.
 
 @author: Mr. Shark Spam Bot
 """
+import os
 import sys
 from lib import listeners
 from lib import payloads
@@ -38,6 +39,7 @@ def main():
             if command == 'listeners':
                 listeners.main()
         except KeyboardInterrupt:
+            os.chdir('/opt/GlidingSword/')
             print()
             continue
 
