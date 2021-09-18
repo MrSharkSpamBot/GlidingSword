@@ -23,7 +23,7 @@ def main():
             if len(command) == 0:
                 continue
             if command == 'clear':
-                print('[H[2J[3J')
+                print('[H[2J[3J', end='')
             if command == 'exit':
                 sys.exit()
             if command == 'help':
