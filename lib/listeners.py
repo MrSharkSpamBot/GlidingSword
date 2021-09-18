@@ -31,7 +31,7 @@ def main():
             os.chdir('..')
             return
         if command[0] == 'clear':
-            print('[H[2J[3J')
+            print('[H[2J[3J', end='')
         if command[0] == 'exit':
             sys.exit()
         if command[0] == 'help':
