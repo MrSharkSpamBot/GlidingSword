@@ -84,7 +84,7 @@ class Listener:
             if command[0] == 'back':
                 return
             if command[0] == 'clear':
-                print('[H[2J[3J')
+                print('[H[2J[3J', end='')
             if command[0] == 'options':
                 self.display_options()
             if command[0] == 'info':
@@ -198,7 +198,7 @@ class ShadowSharkListener:
             if command[0] == 'back':
                 return
             if command[0] == 'clear':
-                print('[H[2J[3J')
+                print('[H[2J[3J', end='')
             if command[0] == 'options':
                 self.display_options()
             if command[0] == 'info':
