@@ -9,6 +9,7 @@ import sys
 from lib import listeners
 from lib import payloads
 
+PATH = os.path.dirname(__file__)
 NORMAL = '\033[0m'
 GREEN = '\33[32m'
 
@@ -39,7 +40,7 @@ def main():
             if command == 'listeners':
                 listeners.main()
         except KeyboardInterrupt:
-            os.chdir('/opt/GlidingSword/')
+            os.chdir(PATH)
             print()
             continue
 
@@ -65,4 +66,5 @@ Listeners: 1
 Payloads: 3
 Payload Types: 1
     ''')
+    os.chdir(PATH)
     main()
