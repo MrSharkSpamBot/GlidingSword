@@ -13,8 +13,6 @@ PATH = os.path.dirname(__file__)
 NORMAL = '\033[0m'
 GREEN = '\33[32m'
 
-LISTENERS = ['ShadowShark']
-
 def main():
     '''The main menu.'''
     while True:
