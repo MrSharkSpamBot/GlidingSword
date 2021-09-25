@@ -1,4 +1,3 @@
 #!/bin/bash
 
-cd /opt/GlidingSword/
-python3 GlidingSword.py
+python3 /opt/GlidingSword/GlidingSword.py
