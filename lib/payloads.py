@@ -62,7 +62,7 @@ def payload_type_menu(payload_type, payloads):
 
 def main():
     '''The payloads menu.'''
-    os.chdir('Payloads')
+    os.chdir('Payloads/')
     while True:
         command = input(f'{GREEN}GlidingSword{NORMAL}/{PURPLE}Payloads{NORMAL}> ')
         command = command.lower().strip()
