@@ -17,7 +17,7 @@ LISTENERS = ['ShadowShark']
 
 def main():
     '''The listeners menu.'''
-    os.chdir('Listeners')
+    os.chdir('Listeners/')
     while True:
         command = input(f'{GREEN}GlidingSword{NORMAL}/{BLUE}Listeners{NORMAL}> ')
         command = command.lower().strip()
