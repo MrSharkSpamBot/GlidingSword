@@ -71,12 +71,12 @@ class Payload:
 
     def valid_encryption(self):
         if not self.encryption in ['hex', 'base64']:
-            print(f'{self.red}[-] Only hex and base64 encryptions are supported.{self.normal}')
+            print(f'{self.red}[-] Invalid value for ENCRYPTION.{self.normal}')
             return False
 
     def valid_obfuscate(self):
         if not self.obfuscate in ['yes', 'no']:
-            print(f"{self.red}[-] It's a yes or no answer.{self.normal}")
+            print(f"{self.red}[-] Invalid value for OBFUSCATE.{self.normal}")
 
     def generate(self):
         '''Generate the payload.'''
@@ -85,6 +85,8 @@ class Payload:
         if self.valid_lport() is False:
             return
         if self.valid_encryption() is False:
+            return
+        if self.valid_obfuscate(): is False:
             return
         with open(self.payload + '.py', 'r') as payload:
             payload = payload.read()
