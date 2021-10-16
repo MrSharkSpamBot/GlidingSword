@@ -86,7 +86,7 @@ class Payload:
             return
         if self.valid_encryption() is False:
             return
-        if self.valid_obfuscate(): is False:
+        if self.valid_obfuscate() is False:
             return
         with open(self.payload + '.py', 'r') as payload:
             payload = payload.read()
