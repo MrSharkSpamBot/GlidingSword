@@ -77,6 +77,7 @@ class Payload:
     def valid_obfuscate(self):
         if not self.obfuscate in ['yes', 'no']:
             print(f"{self.red}[-] Invalid value for OBFUSCATE.{self.normal}")
+            return False
 
     def generate(self):
         '''Generate the payload.'''
