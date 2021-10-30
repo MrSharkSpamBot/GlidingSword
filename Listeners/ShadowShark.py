@@ -9,6 +9,7 @@ import socket
 import sys
 import codecs
 import json
+import readline
 
 def get_arguments():
     '''Get the lhost and lport.'''
@@ -60,6 +61,7 @@ def listen():
     '''Accept the first incoming TCP connection.'''
     try:
         rev_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        rev_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         lhost = arguments[0]
         lport = arguments[1]
         try:
