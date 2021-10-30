@@ -7,7 +7,6 @@ The listener menu.
 import socket
 import sys
 import subprocess
-import readline
 
 class Listener:
     '''Menu for specified listener.'''
