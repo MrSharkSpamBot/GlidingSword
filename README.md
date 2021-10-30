@@ -4,19 +4,21 @@ A full fledged exploitation framework written in pure python3.
 ## Installation
 ### Debian
 ```
-$ sudo apt-get install python3 git
+$ sudo apt-get install python3 python3-pip git
 $ cd /opt/
 $ sudo git clone https://github.com/MrSharkSpamBot/GlidingSword.git
 $ cd GlidingSword/
+$ pip3 install -r requirements.txt
 $ sudo chmod +x GlidingSword
 $ sudo cp GlidingSword /usr/bin/
 ```
 ### Arch
 ```
-$ sudo pacman -S python git
+$ sudo pacman -S python python-pip git
 $ cd /opt/
 $ sudo git clone https://github.com/MrSharkSpamBot/GlidingSword.git
 $ cd GlidingSword/
+$ pip3 install -r requirements.txt
 $ sudo chmod +x GlidingSword
 $ sudo cp GlidingSword /usr/bin/
 ```
