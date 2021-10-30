@@ -6,9 +6,9 @@ The main menu.
 """
 import os
 import sys
+import readline
 from lib import listeners
 from lib import payloads
-import readline
 
 PATH = os.path.dirname(__file__)
 NORMAL = '\033[0m'
