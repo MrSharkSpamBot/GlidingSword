@@ -9,7 +9,6 @@ import sys
 import secrets
 import string
 import random
-import readline
 
 class Payload:
     '''Menu for specified payload.'''
