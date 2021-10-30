@@ -7,6 +7,7 @@ The payloads menu.
 import os
 import sys
 from lib import payload
+import readline
 
 NORMAL = '\033[0m'
 GREEN = '\33[32m'
