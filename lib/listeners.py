@@ -7,6 +7,7 @@ The listeners menu.
 import os
 import sys
 from lib import listener
+import readline
 
 NORMAL = '\033[0m'
 GREEN = '\33[32m'
