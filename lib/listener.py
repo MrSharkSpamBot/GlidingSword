@@ -7,6 +7,7 @@ The listener menu.
 import socket
 import sys
 import subprocess
+from lib import colors
 
 class Listener:
     '''Menu for specified listener.'''
@@ -17,10 +18,6 @@ class Listener:
         self.info = info
         self.lhost = ''
         self.lport = ''
-        self.normal = '\033[0m'
-        self.green = '\33[32m'
-        self.red = '\033[91m'
-        self.blue = '\33[34m'
 
     def display_options(self):
         '''Display the options.'''
@@ -47,19 +44,19 @@ class Listener:
         try:
             socket.inet_aton(self.lhost)
         except socket.error:
-            print(f'{self.red}[-] Invalid value for LHOST.{self.normal}')
+            print(f'{colors.error}[-] Invalid value for LHOST.{colors.normal}')
             return False
         if self.lhost.count('.') != 3:
-            print(f'{self.red}[-] Invalid value for LHOST.{self.normal}')
+            print(f'{colors.error}[-] Invalid value for LHOST.{colors.normal}')
             return False
 
     def valid_lport(self):
         '''Validify the LPORT.'''
         if not self.lport.isdecimal():
-            print(f'{self.red}[-] Invalid value for LPORT.{self.normal}')
+            print(f'{colors.error}[-] Invalid value for LPORT.{colors.normal}')
             return False
         if not 0 < int(self.lport) <= 65535:
-            print(f'{self.red}[-] Invalid value for LPORT.{self.normal}')
+            print(f'{colors.error}[-] Invalid value for LPORT.{colors.normal}')
             return False
 
     def run(self):
@@ -76,7 +73,7 @@ class Listener:
     def main(self):
         '''The menu for the listener.'''
         while True:
-            command = input(f'{self.green}GlidingSword{self.normal}/{self.blue}Listeners{self.normal}/{self.listener}> ')
+            command = input(f'{colors.glidingsword}GlidingSword{colors.normal}/{colors.listeners}Listeners{colors.normal}/{self.listener}> ')
             command = command.lower().strip()
             command = command.split()
             if len(command) == 0:
@@ -97,14 +94,14 @@ class Listener:
                 self.display_help()
             if command[0] == 'set':
                 if len(command) == 1:
-                    print(f'{self.red}[-] No option to set.{self.normal}')
+                    print(f'{colors.error}[-] No option to set.{colors.normal}')
                     continue
                 if len(command) >= 2:
                     if not command[1] in ['lhost', 'lport']:
-                        print(f'{self.red}[-] Invalid option {command[1]}.{self.normal}')
+                        print(f'{colors.error}[-] Invalid option {command[1]}.{colors.normal}')
                         continue
                 if len(command) == 2:
-                    print(f'{self.red}[-] No value to set for option {command[1]}.{self.normal}')
+                    print(f'{colors.error}[-] No value to set for option {command[1]}.{colors.normal}')
                     continue
                 if len(command) == 3:
                     if command[1] == 'lhost':
@@ -123,10 +120,6 @@ class ShadowSharkListener:
         self.lhost = ''
         self.lport = ''
         self.encryption = ''
-        self.normal = '\033[0m'
-        self.green = '\33[32m'
-        self.red = '\033[91m'
-        self.blue = '\33[34m'
 
     def display_options(self):
         '''Display the options.'''
@@ -154,24 +147,24 @@ class ShadowSharkListener:
         try:
             socket.inet_aton(self.lhost)
         except socket.error:
-            print(f'{self.red}[-] Invalid value for LHOST.{self.normal}')
+            print(f'{colors.error}[-] Invalid value for LHOST.{colors.normal}')
             return False
         if self.lhost.count('.') != 3:
-            print(f'{self.red}[-] Invalid value for LHOST.{self.normal}')
+            print(f'{colors.error}[-] Invalid value for LHOST.{colors.normal}')
             return False
 
     def valid_lport(self):
         '''Validify the LPORT.'''
         if not self.lport.isdecimal():
-            print(f'{self.red}[-] Invalid value for LPORT.{self.normal}')
+            print(f'{colors.error}[-] Invalid value for LPORT.{colors.normal}')
             return False
         if not 0 < int(self.lport) <= 65535:
-            print(f'{self.red}[-] Invalid value for LPORT.{self.normal}')
+            print(f'{colors.error}[-] Invalid value for LPORT.{colors.normal}')
             return False
 
     def valid_encryption(self):
         if not self.encryption in ['hex', 'base64']:
-            print(f'{self.red}[-] Only hex and base64 encryptions are supported.{self.normal}')
+            print(f'{colors.error}[-] Only hex and base64 encryptions are supported.{colors.normal}')
             return False
 
     def run(self):
@@ -190,7 +183,7 @@ class ShadowSharkListener:
     def main(self):
         '''The menu for the listener.'''
         while True:
-            command = input(f'{self.green}GlidingSword{self.normal}/{self.blue}Listeners{self.normal}/ShadowShark> ')
+            command = input(f'{colors.glidingsword}GlidingSword{colors.normal}/{colors.listeners}Listeners{colors.normal}/ShadowShark> ')
             command = command.lower().strip()
             command = command.split()
             if len(command) == 0:
@@ -211,14 +204,14 @@ class ShadowSharkListener:
                 self.display_help()
             if command[0] == 'set':
                 if len(command) == 1:
-                    print(f'{self.red}[-] No option to set.{self.normal}')
+                    print(f'{colors.error}[-] No option to set.{colors.normal}')
                     continue
                 if len(command) >= 2:
                     if not command[1] in ['lhost', 'lport', 'encryption']:
-                        print(f'{self.red}[-] Invalid option {command[1]}.{self.normal}')
+                        print(f'{colors.error}[-] Invalid option {command[1]}.{colors.normal}')
                         continue
                 if len(command) == 2:
-                    print(f'{self.red}[-] No value to set for option {command[1]}.{self.normal}')
+                    print(f'{colors.error}[-] No value to set for option {command[1]}.{colors.normal}')
                     continue
                 if len(command) == 3:
                     if command[1] == 'lhost':
