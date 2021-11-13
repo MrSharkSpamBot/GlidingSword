@@ -7,11 +7,7 @@ The listeners menu.
 import os
 import sys
 from lib import listener
-
-NORMAL = '\033[0m'
-GREEN = '\33[32m'
-BLUE = '\33[34m'
-RED = '\033[91m'
+from lib import colors
 
 LISTENERS = ['ShadowShark']
 
@@ -19,7 +15,7 @@ def main():
     '''The listeners menu.'''
     os.chdir('Listeners/')
     while True:
-        command = input(f'{GREEN}GlidingSword{NORMAL}/{BLUE}Listeners{NORMAL}> ')
+        command = input(f'{colors.glidingsword}GlidingSword{colors.normal}/{colors.listeners}Listeners{colors.normal}> ')
         command = command.lower().strip()
         command = command.split()
         if len(command) == 0:
@@ -45,14 +41,14 @@ def main():
             print('use                 use LISTENER         Use a listener.')
         if command[0] == 'use':
             if len(command) == 1:
-                print(f'{RED}[-] No listener to use.{NORMAL}')
+                print(f'{colors.error}[-] No listener to use.{colors.normal}')
                 continue
             if len(command) >= 2:
                 for alistener in LISTENERS:
                     if command[1] == alistener.lower():
                         break
                 if command[1] != alistener.lower():
-                    print(f'{RED}[-] Invalid listener {command[1]}.{NORMAL}')
+                    print(f'{colors.error}[-] Invalid listener {command[1]}.{colors.normal}')
                     continue
                 if alistener == 'ShadowShark':
                     listener.ShadowSharkListener().main()
