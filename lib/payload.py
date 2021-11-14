@@ -105,13 +105,13 @@ class Payload:
             payload = payload.replace('output', output)
             for i in range(5):
                 payload = payload + f'{secrets.token_bytes()}\n'
-        print(f'{colors.glidingsword}[+] Successfully generated payload.{colors.normal}\n')
+        print(f'{colors.success}[+] Successfully generated payload.{colors.normal}\n')
         print(payload)
 
     def main(self):
         '''The menue for the payload.'''
         while True:
-            command = input(f'{colors.success}GlidingSword{colors.normal}/{colors.payloads}Payloads{colors.normal}/{self.payload_type}/{self.payload}> ')
+            command = input(f'{colors.glidingsword}GlidingSword{colors.normal}/{colors.payloads}Payloads{colors.normal}/{self.payload_type}/{self.payload}> ')
             command = command.lower().strip()
             command = command.split()
             if len(command) == 0:
