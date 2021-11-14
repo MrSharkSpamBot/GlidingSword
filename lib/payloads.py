@@ -7,11 +7,7 @@ The payloads menu.
 import os
 import sys
 from lib import payload
-
-NORMAL = '\033[0m'
-GREEN = '\33[32m'
-PURPLE = '\33[35m'
-RED = '\033[91m'
+from lib import colors
 
 PAYLOAD_TYPES = ['ShadowShark']
 SHADOWSHARK = {'WindowsPayload': 'A full fledged Shadow Shark payload for Windows.',
@@ -22,7 +18,7 @@ def payload_type_menu(payload_type, payloads):
     '''The menu for a payload type.'''
     os.chdir(payload_type)
     while True:
-        command = input(f'{GREEN}GlidingSword{NORMAL}/{PURPLE}Payloads{NORMAL}/{payload_type}> ')
+        command = input(f'{colors.glidingsword}GlidingSword{colors.normal}/{colors.payloads}Payloads{colors.normal}/{payload_type}> ')
         command = command.lower().strip()
         command = command.split()
         if len(command) == 0:
@@ -48,7 +44,7 @@ def payload_type_menu(payload_type, payloads):
             print('use                 use PAYLOAD          Use a payload.')
         if command[0] == 'use':
             if len(command) == 1:
-                print(f'{RED}[-] No payload to use.{NORMAL}')
+                print(f'{colors.error}[-] No payload to use.{colors.normal}')
                 continue
             if len(command) >= 2:
                 for p in payloads.keys():
@@ -56,7 +52,7 @@ def payload_type_menu(payload_type, payloads):
                         info = payloads[p]
                         break
                 if command[1] != p.lower():
-                    print(f'{RED}[-] Invalid payload {command[1]}.{NORMAL}')
+                    print(f'{colors.error}[-] Invalid payload {command[1]}.{colors.normal}')
                     continue
                 payload.Payload(p, payload_type, info).main()
 
@@ -64,7 +60,7 @@ def main():
     '''The payloads menu.'''
     os.chdir('Payloads/')
     while True:
-        command = input(f'{GREEN}GlidingSword{NORMAL}/{PURPLE}Payloads{NORMAL}> ')
+        command = input(f'{colors.glidingsword}GlidingSword{colors.normal}/{colors.payloads}Payloads{colors.normal}> ')
         command = command.lower().strip()
         command = command.split()
         if len(command) == 0:
@@ -90,14 +86,14 @@ def main():
             print('use                 use PAYLOAD_TYPE     Use a payload type.')
         if command[0] == 'use':
             if len(command) == 1:
-                print(f'{RED}[-] No payload type to use.{NORMAL}')
+                print(f'{colors.error}[-] No payload type to use.{colors.normal}')
                 continue
             if len(command) >= 2:
                 for payload_type in PAYLOAD_TYPES:
                     if command[1] == payload_type.lower():
                         break
                 if command[1] != payload_type.lower():
-                    print(f'{RED}[-] Invalid payload type {command[1]}.{NORMAL}')
+                    print(f'{colors.error}[-] Invalid payload type {command[1]}.{colors.normal}')
                     continue
                 if payload_type == 'ShadowShark':
                     payload_type_menu(payload_type, SHADOWSHARK)
