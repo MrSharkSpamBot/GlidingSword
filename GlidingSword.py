@@ -9,16 +9,15 @@ import sys
 import readline
 from lib import listeners
 from lib import payloads
+from lib import colors
 
 PATH = os.path.dirname(__file__)
-NORMAL = '\033[0m'
-GREEN = '\33[32m'
 
 def main():
     '''The main menu.'''
     while True:
         try:
-            command = input(f'{GREEN}GlidingSword{NORMAL}> ')
+            command = input(f'{colors.glidingsword}GlidingSword{colors.normal}> ')
             command = command.lower().strip()
             if len(command) == 0:
                 continue
