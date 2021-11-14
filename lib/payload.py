@@ -9,6 +9,7 @@ import sys
 import secrets
 import string
 import random
+from lib import colors
 
 class Payload:
     '''Menu for specified payload.'''
@@ -21,11 +22,6 @@ class Payload:
         self.lport = ''
         self.encryption = ''
         self.obfuscate = ''
-        self.normal = '\033[0m'
-        self.green = '\033[92m'
-        self.green2 = '\33[32m'
-        self.red = '\033[91m'
-        self.purple = '\33[35m'
 
     def display_options(self):
         '''Display the options.'''
@@ -54,29 +50,29 @@ class Payload:
         try:
             socket.inet_aton(self.lhost)
         except socket.error:
-            print(f'{self.red}[-] Invalid value for LHOST.{self.normal}')
+            print(f'{colors.error}[-] Invalid value for LHOST.{colors.normal}')
             return False
         if self.lhost.count('.') != 3:
-            print(f'{self.red}[-] Invalid value for LHOST.{self.normal}')
+            print(f'{colors.error}[-] Invalid value for LHOST.{colors.normal}')
             return False
 
     def valid_lport(self):
         '''Validify the LPORT.'''
         if not self.lport.isdecimal():
-            print(f'{self.red}[-] Invalid value for LPORT.{self.normal}')
+            print(f'{colors.error}[-] Invalid value for LPORT.{colors.normal}')
             return False
         if not 0 < int(self.lport) <= 65535:
-            print(f'{self.red}[-] Invalid value for LPORT.{self.normal}')
+            print(f'{colors.error}[-] Invalid value for LPORT.{colors.normal}')
             return False
 
     def valid_encryption(self):
         if not self.encryption in ['hex', 'base64']:
-            print(f'{self.red}[-] Invalid value for ENCRYPTION.{self.normal}')
+            print(f'{colors.error}[-] Invalid value for ENCRYPTION.{colors.normal}')
             return False
 
     def valid_obfuscate(self):
         if not self.obfuscate in ['yes', 'no']:
-            print(f"{self.red}[-] Invalid value for OBFUSCATE.{self.normal}")
+            print(f"{colors.error}[-] Invalid value for OBFUSCATE.{colors.normal}")
             return False
 
     def generate(self):
@@ -109,13 +105,13 @@ class Payload:
             payload = payload.replace('output', output)
             for i in range(5):
                 payload = payload + f'{secrets.token_bytes()}\n'
-        print(f'{self.green}[+] Successfully generated payload.{self.normal}\n')
+        print(f'{colors.glidingsword}[+] Successfully generated payload.{colors.normal}\n')
         print(payload)
 
     def main(self):
         '''The menue for the payload.'''
         while True:
-            command = input(f'{self.green2}GlidingSword{self.normal}/{self.purple}Payloads{self.normal}/{self.payload_type}/{self.payload}> ')
+            command = input(f'{colors.success}GlidingSword{colors.normal}/{colors.payloads}Payloads{colors.normal}/{self.payload_type}/{self.payload}> ')
             command = command.lower().strip()
             command = command.split()
             if len(command) == 0:
@@ -136,14 +132,14 @@ class Payload:
                 self.display_help()
             if command[0] == 'set':
                 if len(command) == 1:
-                    print(f'{self.red}[-] No option to set.{self.normal}')
+                    print(f'{colors.error}[-] No option to set.{colors.normal}')
                     continue
                 if len(command) >= 2:
                     if not command[1] in ['lhost', 'lport', 'encryption', 'obfuscate']:
-                        print(f'{self.red}[-] Invalid option {command[1]}.{self.normal}')
+                        print(f'{colors.error}[-] Invalid option {command[1]}.{colors.normal}')
                         continue
                 if len(command) == 2:
-                    print(f'{self.red}[-] No value to set for option {command[1]}.{self.normal}')
+                    print(f'{colors.error}[-] No value to set for option {command[1]}.{colors.normal}')
                     continue
                 if len(command) == 3:
                     if command[1] == 'lhost':
