@@ -307,4 +307,4 @@ GlidingSword/Payloads/ShadowShark/UnixPayload>
 To terminate a listener use Ctrl + c. In all other cases use Ctrl + c to return to the main menu. This framework is user friendly and is not case-sensitive.
 
 ## OS support
-Gliding Sword can run on any Linux system with python3 support.
+Gliding Sword can run on any Linux system that supports python3.
