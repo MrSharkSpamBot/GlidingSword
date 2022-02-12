@@ -107,7 +107,7 @@ class Payload:
                 payload = payload + f'{secrets.token_bytes()}\n'
         print(f'{colors.success}[+] Successfully generated payload.{colors.normal}')
         try:
-            file_name = secrets.token_hex() + '.txt'
+            file_name = f'/tmp/{secrets.token_hex()}.txt'
             with open(file_name, 'w') as file:
                 file.write(payload)
             print(f'[+] File written to {file_name}.')
