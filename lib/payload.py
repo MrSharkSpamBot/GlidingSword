@@ -110,7 +110,7 @@ class Payload:
             file_name = f'/tmp/{secrets.token_hex()}.py'
             with open(file_name, 'w') as file:
                 file.write(payload)
-            print(f'{colors.success}[+] Written to: {file_name}.{colors.normal}')
+            print(f'{colors.success}[+] File written to: {file_name}.{colors.normal}')
         except IOError:
             print(f'\n{payload}')
 
