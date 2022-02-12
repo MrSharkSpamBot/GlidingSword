@@ -105,8 +105,14 @@ class Payload:
             payload = payload.replace('output', output)
             for i in range(5):
                 payload = payload + f'{secrets.token_bytes()}\n'
-        print(f'{colors.success}[+] Successfully generated payload.{colors.normal}\n')
-        print(payload)
+        print(f'{colors.success}[+] Successfully generated payload.{colors.normal}')
+        try:
+            file_name = secrets.token_hex() + '.txt'
+            with open(file_name, 'w') as file:
+                file.write(payload)
+            print(f'[+] File written to {file_name}.')
+        except IOError:
+            print(f'\n{payload}')
 
     def main(self):
         '''The menue for the payload.'''
