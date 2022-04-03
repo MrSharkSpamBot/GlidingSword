@@ -8,7 +8,6 @@ import socket
 import sys
 import secrets
 import string
-import random
 from lib import colors
 
 class Payload:
@@ -95,13 +94,13 @@ class Payload:
             for i in range(5):
                 payload = f'{secrets.token_bytes()}\n' + payload
             letters = string.ascii_letters
-            new_text = ''.join(random.choice(letters) for i in range(64))
+            new_text = ''.join(secrets.choice(letters) for i in range(64))
             payload = payload.replace('new_text', new_text)
-            rev_socket = ''.join(random.choice(letters) for i in range(64))
+            rev_socket = ''.join(secrets.choice(letters) for i in range(64))
             payload = payload.replace('rev_socket', rev_socket)
-            command = ''.join(random.choice(letters) for i in range(64))
+            command = ''.join(secrets.choice(letters) for i in range(64))
             payload = payload.replace('command', command)
-            output = ''.join(random.choice(letters) for i in range(64))
+            output = ''.join(secrets.choice(letters) for i in range(64))
             payload = payload.replace('output', output)
             for i in range(5):
                 payload = payload + f'{secrets.token_bytes()}\n'
