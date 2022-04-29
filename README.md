@@ -1,4 +1,4 @@
-# GlidingSword
+# Gliding Sword
 A full fledged exploitation framework written in pure python3.
 
 ## Installation
