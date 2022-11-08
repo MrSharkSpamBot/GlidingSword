@@ -1,5 +1,5 @@
 # Gliding Sword
-A full fledged exploitation framework written in pure python3.
+A wacky exploitation framework written in pure python3. I wrote it to learn more python.
 
 ## Installation
 ### Debian
